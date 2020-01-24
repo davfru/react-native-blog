@@ -8,6 +8,7 @@ import {
     TouchableOpacity 
 } from 'react-native';
 import { Context } from '../context/BlogContext';
+import Header from '../components/Header';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -27,6 +28,7 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View>
+            <Header></Header>
             <ScrollView>
                 <FlatList
                     data={state}
@@ -61,9 +63,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18
-    },
-    icon: {
-        fontSize: 24
     }
 });
 
