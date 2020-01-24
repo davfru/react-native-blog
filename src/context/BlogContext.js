@@ -15,8 +15,8 @@ const blogReducer = (state, action) => {
             });
         case 'delete_post':
             return state.filter(blogPost => blogPost.id !== action.payload);
-        default:
-            return state;*/
+        */default:
+            return state;
     }
 }
 

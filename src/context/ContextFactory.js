@@ -8,7 +8,7 @@ export default(reducer, actions, initialState) => {
         const boundActions = {};
         
         for (let key in actions) {
-            boundActions[key] = action[key](dispatch);
+            boundActions[key] = actions[key](dispatch);
         }
 
         return <Context.Provider value = {{state, ...boundActions}}>
