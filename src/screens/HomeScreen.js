@@ -13,7 +13,7 @@ import { List } from 'react-native-paper';
 
 const HomeScreen = ({ navigation }) => {
 
-    const { state, getBlogPost } = useContext(Context);
+    const { state, getBlogPost, deleteBlogPost } = useContext(Context);
 
     useEffect(() => {
 
