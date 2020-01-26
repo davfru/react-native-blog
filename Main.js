@@ -7,7 +7,7 @@ const theme = {
     colors: {
         ...DefaultTheme.dark = true,
         primary: 'black',
-        accent: 'yellow',
+        accent: 'red',
         background: 'white',
         text: 'black'
     },

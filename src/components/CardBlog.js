@@ -4,7 +4,10 @@ import {
     StyleSheet,
     View 
 } from 'react-native';
-import { Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Button, 
+    Card, 
+    Title, 
+    Paragraph } from 'react-native-paper';
 import { Context } from '../context/BlogContext';
 
 const CardBlog = ({item, navigation}) => {
