@@ -1,5 +1,10 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { 
+    View, 
+    StyleSheet,  
+    } from 'react-native';
+
+import { TextInput, Button, Text } from 'react-native-paper';
 
 const CardBlogForm = ({onSubmit, initialValues}) => {
 
@@ -9,25 +14,23 @@ const CardBlogForm = ({onSubmit, initialValues}) => {
     return (
         
         <View style={styles.container}>
-            <Text style={styles.label}>Enter title:</Text>
+            <Text>Enter title:</Text>
             <TextInput
-                style={styles.input}
                 value={title}
+                mode='outlined'
+                multiline
                 onChangeText={text => setTitle(text)}
-                />
+            />
 
-            <Text style={styles.label}>Enter content:</Text>
+            <Text>Enter content:</Text>
             <TextInput
-                style={styles.input}
+                mode='outlined'
                 value={content}
+                multiline
+                numberOfLines={10}
                 onChangeText={content => setContent(content)}
             />
-            <Button 
-                title="save"
-                onPress={() => {
-                    onSubmit(title, content)
-                }}
-            />
+            <Button onPress={() => { onSubmit(title, content)}}>Save</Button>
         </View>
     );
 }
@@ -40,20 +43,11 @@ CardBlogForm.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-
-    input: {
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'black',
-        marginBottom: 15,
-        margin: 5,
-        padding: 5
-    },
-    label: {
-        fontSize: 20,
-        marginBottom: 5,
-        marginLeft: 5
+    
+    container: {
+        margin: 10
     }
+   
 });
 
 export default CardBlogForm;

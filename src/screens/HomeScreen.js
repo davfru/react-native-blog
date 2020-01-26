@@ -3,7 +3,6 @@ import {
     View, 
     StyleSheet,
     FlatList, 
-    ScrollView, 
 } from 'react-native';
 import { Context } from '../context/BlogContext';
 
@@ -28,18 +27,15 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View>
-
-            <ScrollView>
-                <FlatList
-                    data={state}
-                    keyExtractor={(blogPost) => blogPost.id.toString()}
-                    renderItem={({ item, }) => {
-                        return (
-                            <CardBlog item={item} navigation={navigation}/>
-                        );
-                    }}
-                />
-            </ScrollView> 
+            <FlatList
+                data={state}
+                keyExtractor={(blogPost) => blogPost.id.toString()}
+                renderItem={({ item, }) => {
+                    return (
+                        <CardBlog item={item} navigation={navigation}/>
+                    );
+                }}
+            />
         </View>
     );
 }

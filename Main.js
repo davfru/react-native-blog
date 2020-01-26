@@ -6,9 +6,13 @@ const theme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.dark = true,
-        primary: 'green',
+        primary: 'black',
         accent: 'yellow',
+        background: 'white',
+        text: 'black'
     },
+    roundness: 5,
+    //mode: 'adaptive'
 };
 
 export default function Main() {

@@ -5,7 +5,7 @@ const blogReducer = (state, action) => {
     switch(action.type) {
         case 'get_posts':
             return action.payload;
-        /*case 'edit_post':
+        case 'edit_post':
             return state.map((blogPost) => {
                 if(blogPost.id === action.payload.id) {
                     return action.payload;
@@ -13,7 +13,7 @@ const blogReducer = (state, action) => {
                     return blogPost;
                 }
             });
-        */
+        
         case 'delete_post':
             return state.filter(blogPost => blogPost.id !== action.payload);
         default:
@@ -36,8 +36,22 @@ const deleteBlogPost = dispatch => {
     }
 };
 
+const editBlogPost = dispatch => {
+    return async (id, title, content, callback) => {
+
+        await jsonServer.put(`/blogposts/${id}`, 
+        {title, content});
+        
+        dispatch({ type: 'edit_post', 
+        payload: {id, title, content}});
+        if(callback) {
+            callback();
+        }
+    };
+}
+
 export const { Context, Provider } = contextFactory(
     blogReducer,
-    { getBlogPost, deleteBlogPost },
+    { getBlogPost, deleteBlogPost, editBlogPost },
     []
 );
