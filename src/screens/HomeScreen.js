@@ -6,7 +6,7 @@ import {
     ScrollView, 
 } from 'react-native';
 import { Context } from '../context/BlogContext';
-import Header from '../components/Header';
+
 import CardBlog from '../components/CardBlog';
 
 const HomeScreen = ({ navigation }) => {
@@ -28,14 +28,14 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View>
-            <Header></Header>
+
             <ScrollView>
                 <FlatList
                     data={state}
                     keyExtractor={(blogPost) => blogPost.id.toString()}
-                    renderItem={({ item }) => {
+                    renderItem={({ item, }) => {
                         return (
-                            <CardBlog item={item}/>
+                            <CardBlog item={item} navigation={navigation}/>
                         );
                     }}
                 />
