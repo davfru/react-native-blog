@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Context } from '../context/BlogContext';
 import Header from '../components/Header';
-import { List } from 'react-native-paper';
+import { List, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -40,23 +40,25 @@ const HomeScreen = ({ navigation }) => {
                     renderItem={({ item }) => {
                         return (
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('Show', { id: item.id })}
-                            >
-                                <List.Item
-                                    title={item.title}
-                                    description={item.content}
-                                    right={() =>
+                                onPress={() => navigation.navigate('Show', { id: item.id })}>
+                                <Card>
+                                    <Card.Content>
+                                    <Title>{item.title}</Title>
+                                    <Paragraph>{item.content}</Paragraph>
+                                    </Card.Content>
+                                    <Card.Actions>
                                         <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                                            <List.Icon icon="delete" />
-                                        </TouchableOpacity>}
-                                />  
+                                            <Button>Delete</Button>
+                                        </TouchableOpacity>
+                                    </Card.Actions>
+                                </Card>
                             </TouchableOpacity>
                         );
                     }}
                 />
             </ScrollView>
 
-            
+                  
 
         </View>
     );
