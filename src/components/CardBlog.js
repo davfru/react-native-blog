@@ -5,7 +5,7 @@ import {
 import { Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Context } from '../context/BlogContext';
 
-const cardBlog = ({item, navigation}) => {
+const CardBlog = ({item, navigation}) => {
 
     const { deleteBlogPost } = useContext(Context);
 
@@ -16,7 +16,7 @@ const cardBlog = ({item, navigation}) => {
                 <Paragraph>{item.content}</Paragraph>
             </Card.Content>
             <Card.Actions>
-                <TouchableOpacity onPress={() => navigation.navigate('Edit', {id: item.id})}>
+                <TouchableOpacity onPress={() => navigation.navigate('Edit', {item})}>
                     <Button>Modify</Button>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
@@ -27,4 +27,4 @@ const cardBlog = ({item, navigation}) => {
     );
 };
 
-export default cardBlog;
+export default CardBlog;

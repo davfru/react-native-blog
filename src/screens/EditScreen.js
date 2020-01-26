@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text } from 'react-native';
+import CardBlogForm from '../components/CardBlogForm';
+import { Context } from '../context/BlogContext';
 
 const editScreen = ({navigation}) => {
 
-    const id = navigation.getParam('id');
+    const item = navigation.getParam('item');
+
+    const {editBlogPost} = useContext(Context);
 
     return (
         <>
-            <Text>This is the edit screen for {id}</Text>
+            <CardBlogForm initialValues={{title: item.title, content: item.content}}
+                onSubmit={(title, content) => {
+                    editBlogPost(item.id, title, content, ()=>navigation.pop());
+                }}/>
         </>
     );
 }
