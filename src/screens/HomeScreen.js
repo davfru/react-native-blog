@@ -9,12 +9,16 @@ import {
 } from 'react-native';
 import { Context } from '../context/BlogContext';
 import Header from '../components/Header';
+import { List } from 'react-native-paper';
 
 const HomeScreen = ({ navigation }) => {
 
     const { state, getBlogPost } = useContext(Context);
 
     useEffect(() => {
+
+        console.log(state);
+        
         getBlogPost();
 
         const listener = navigation.addListener('didFocus', () => {
@@ -38,32 +42,28 @@ const HomeScreen = ({ navigation }) => {
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('Show', { id: item.id })}
                             >
-                                <View style={styles.row}>
-                                    <Text style={styles.title}>{item.title}</Text>
-                                    <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                                        <Text> deleteMe </Text>
-                                    </TouchableOpacity>
-                                </View>
+                                <List.Item
+                                    title={item.title}
+                                    description={item.content}
+                                    right={() =>
+                                        <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                                            <List.Icon icon="delete" />
+                                        </TouchableOpacity>}
+                                />  
                             </TouchableOpacity>
                         );
                     }}
                 />
             </ScrollView>
+
+            
+
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 20,
-        borderBottomWidth: 1,
-        borderColor: 'red'
-    },
-    title: {
-        fontSize: 18
-    }
+  
 });
 
 
