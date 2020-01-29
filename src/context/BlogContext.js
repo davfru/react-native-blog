@@ -12,8 +12,7 @@ const blogReducer = (state, action) => {
                 } else {
                     return blogPost;
                 }
-            });
-        
+            });        
         case 'delete_post':
             return state.filter(blogPost => blogPost.id !== action.payload);
         default:
@@ -50,8 +49,18 @@ const editBlogPost = dispatch => {
     };
 }
 
+const addBlogPost = dispatch => {
+    return async (title, content, callback) => {
+
+        await jsonServer.post(`/blogposts`, {title, content});
+        if(callback) {
+            callback();
+        }
+    }
+}
+
 export const { Context, Provider } = contextFactory(
     blogReducer,
-    { getBlogPost, deleteBlogPost, editBlogPost },
+    { getBlogPost, deleteBlogPost, editBlogPost, addBlogPost },
     []
 );

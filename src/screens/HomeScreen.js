@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { 
-    View, 
+    View,
+    Text, 
     StyleSheet,
     FlatList, 
 } from 'react-native';
@@ -41,7 +42,7 @@ const HomeScreen = ({ navigation }) => {
                 style={styles.fab}
                 small
                 icon="plus"
-                onPress={() => console.log('Pressed')}
+                onPress={() => navigation.navigate('Create')}
             />
         </View>
     );
